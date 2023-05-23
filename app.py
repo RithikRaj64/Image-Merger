@@ -61,29 +61,18 @@ result = None
 
 canvas = Image.open("Canvas.jpg") if canvas is None else canvas
 
-# merge button
-merge_button = st.markdown(
-    """
-    <div style='display: flex; justify-content: center;'>
-        <button style='padding: 10px 20px; border-radius: 5px; border: 2px solid orangered;
-        color: white; background-color: black; margin-bottom: 30px;'>Merge</button>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-if merge_button:
-    if poster is not None:
-        result = merge_images(
-            canvas=canvas,
-            poster=poster,
-            text=text,
-            text_size=text_size,
-            color=color,
-            font=font,
-        )
-    else:
-        st.write("Please upload Poster image")
+# merging the images
+if poster is not None:
+    result = merge_images(
+        canvas=canvas,
+        poster=poster,
+        text=text,
+        text_size=text_size,
+        color=color,
+        font=font,
+    )
+else:
+    st.write("Please upload Poster image")
 
 # displaying the result
 if result is not None:
